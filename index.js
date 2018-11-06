@@ -1,4 +1,4 @@
-require('./lib/vue-simple-toast-plugin.css');
+require('./lib/vue-dialog-plugin.css');
 // es6
-var SimpleToast = require('./lib/vue-simple-toast-plugin')
-module.exports = SimpleToast
+var Dialog = require('./lib/vue-dialog-plugin.js')
+module.exports = Dialog
