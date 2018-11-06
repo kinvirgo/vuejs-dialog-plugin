@@ -3,60 +3,77 @@
     <head>
         <meta charset="utf-8">
         <title>vue-simple-toast</title>
-        <link rel="stylesheet" href="./../lib/vue-simple-toast-plugin.css">
+        <link rel="stylesheet" href="./../lib/vue-dialog-plugin.css">
     </head>
     <body>
         <div id="app">
-            <p>{{message}}</p>
-            <button type="button" @click="info">info</button>
-            <button type="button" @click="success">success</button>
-            <button type="button" @click="warn">warn</button>
-            <button type="button" @click="error">error</button>
-            <button type="button" @click="load">load</button>
+            <button type="button" @click="message">message</button>
+            <button type="button" @click="alert">alert</button>
+            <button type="button" @click="confirm">Confirm</button>
+            <button type="button" @click="prompt">prompt</button>
         </div>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script type="text/javascript" src="./../lib/vue-simple-toast-plugin.js"></script>
+    <script type="text/javascript" src="./../lib/vue-dialog-plugin.js"></script>
     <script type="text/javascript">
+        var bgBase64 = "data:image/jpeg;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//Z";
         // Vue.use(Toast);
         new Vue({
             el : "#app",
             data : {
-                message : "hello Vue!"
+
             },
             methods : {
-                info:function(){
-                    this.$Toast.info('消息提醒。',{
-                        // duration : 20000,
-                    })
+                alert() {
+                    this.$Dialog.Alert("请求超时,请稍后重试。", "温馨提示").then((id) => {
+                        // 成功
+                        console.log(id);
+                    });
                 },
-                success:function(){
-                    this.$Toast.success('操作成功！',{
-                        // duration : 20000,
-                    })
+                confirm() {
+                    this.$Dialog.Confirm("你已经提交过申请,请勿重复提交。", "确认提示").then((id) => {
+                        // 成功
+                        console.log(id);
+                    });
                 },
-                warn:function(){
-                    this.$Toast.warn('警告!',{
-                        // duration : 20000,
-                    })
+                prompt() {
+                    this.$Dialog.Prompt("请输入金额", "1000", "请输入大于100整数的金额").then((id) => {
+                        // 成功
+                        console.log(id);
+                    });
                 },
-                error:function(){
-                    this.$Toast.error('填写错误',{
-                        // duration : 20000,
-                    })
-                },
-                load:function(){
-                    var _this = this;
-                    var t = this.$Toast.load('加载中...',{
-                        // duration : 20000,
-                        onClose : function(){
-                            _this.$Toast.success('加载完成！',{
-                                // duration : 20000,
-                            })
+                message() {
+                    var title = "简介:百度";
+                    var msg = "百度（纳斯达克：BIDU），全球最大的中文搜索引擎、最大的中文网站。1999年底,身在美国硅谷的李彦宏看到了中国互联网及中文搜索引擎服务的巨大发展潜力，抱着技术改变世界的梦想，他毅然辞掉硅谷的高薪工作，携搜索引擎专利技术，于 2000年1月1日在中关村创建了百度公司。";
+                    this.$Dialog.Message(msg, title, {
+                        button: ["我知道了",{
+                            "立即访问" : {
+                                "border-color" : "#fff"
+                            }
+                        }],
+                        // btnEffect: "right",
+                        titlEffect : 'center',
+                        vHtml: true,
+                        lineClamp : 6,
+                        bgStyle : {
+                            "background-image" : `url(${bgBase64})`,
+                            // "opacity": .1
+                        },
+                        titleStyle : {
+                            'color' : "#173162"
+                        },
+                        messageStyle : {
+                            'color' : "#1E3C84",
+                            'font-size' : "14px",
+                        }
+                    }).then((data)=>{
+                        // 回调
+                        console.log( data );
+                        if(data.id == 2){
+                            window.open("https://www.baidu.com/");
                         }
                     });
-                    setTimeout(t, 3000);
-                },
+                }
             }
         });
     </script>

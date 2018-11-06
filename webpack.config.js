@@ -37,6 +37,17 @@ const webpackConfig = {
         }, {
             test: /\.scss$/,
             use: [...MiniCss, 'css-loader', 'sass-loader']
+        },{
+            test:/\.(png|svg|jpg|jpeg|gif)$/i,
+            // use:[ {loader:'url-loader?limit=8192&name=build/images/[name].[hash:8].[ext]'} ]
+            use : [{
+                loader:'url-loader',
+                options : {
+                    limit: 8192,    // 把小于8192B的文件打成Base64的格式，写入JS
+                    // outputPath: 'build/',
+                    name: 'dist/images/[name].[hash:8].[ext]',  // 放在文件夹的路径及命名
+                }
+            }]
         }]
     },
     optimization : {
@@ -90,7 +101,7 @@ if(NODE_ENV == 'development'){
         port : 8081,
         compress : true,
         open:true,
-        openPage : '/dist/views/',
+        openPage : 'dist/views/',
         inline : true,
     };
     webpackConfig.devtool = 'cheap-module-eval-source-map';
