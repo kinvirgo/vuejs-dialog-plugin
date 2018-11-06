@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>vue-simple-toast</title>
+        <link rel="stylesheet" href="./../lib/vue-simple-toast-plugin.css">
+    </head>
+    <body>
+        <div id="app">
+            <p>{{message}}</p>
+            <button type="button" @click="info">info</button>
+            <button type="button" @click="success">success</button>
+            <button type="button" @click="warn">warn</button>
+            <button type="button" @click="error">error</button>
+            <button type="button" @click="load">load</button>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript" src="./../lib/vue-simple-toast-plugin.js"></script>
+    <script type="text/javascript">
+        // Vue.use(Toast);
+        new Vue({
+            el : "#app",
+            data : {
+                message : "hello Vue!"
+            },
+            methods : {
+                info:function(){
+                    this.$Toast.info('消息提醒。',{
+                        // duration : 20000,
+                    })
+                },
+                success:function(){
+                    this.$Toast.success('操作成功！',{
+                        // duration : 20000,
+                    })
+                },
+                warn:function(){
+                    this.$Toast.warn('警告!',{
+                        // duration : 20000,
+                    })
+                },
+                error:function(){
+                    this.$Toast.error('填写错误',{
+                        // duration : 20000,
+                    })
+                },
+                load:function(){
+                    var _this = this;
+                    var t = this.$Toast.load('加载中...',{
+                        // duration : 20000,
+                        onClose : function(){
+                            _this.$Toast.success('加载完成！',{
+                                // duration : 20000,
+                            })
+                        }
+                    });
+                    setTimeout(t, 3000);
+                },
+            }
+        });
+    </script>
+</html>
