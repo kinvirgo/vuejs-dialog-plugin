@@ -10,14 +10,12 @@ yarn add vuejs-dialog-plugin
 使用
 ---
 ```
-//es7
 const Vue from 'vue'
 const Dialog from 'vuejs-dialog-plugin'
 Vue.use(Dialog)
 ...
 this.$Dialog.Message("这里是提示内容","这里是标题")
 
-//es6
 var Vue = require('vue')
 var Dialog = require('vuejs-dialog-plugin')
 Vue.use(Dialog)
