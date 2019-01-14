@@ -11,10 +11,10 @@ Dialog.install = (Vue) => {
             return new Promise((resolve, reject)=>{
                 instance.message(msg, title, option);
                 // 注册回调成功函数
-                instance.resolve = (id)=>{
+                instance.resolve = (_id)=>{
                     instance.show = false;
                     resolve({
-                        id,
+                        _id,
                     });
                 }
             })
@@ -23,10 +23,10 @@ Dialog.install = (Vue) => {
             return new Promise((resolve, reject)=>{
                 instance.alert(msg, title, { isClose:false, lineClamp : 3 });
                 // 注册回调成功函数
-                instance.resolve = (id)=>{
+                instance.resolve = (_id)=>{
                     instance.show = false;
                     resolve({
-                        id,
+                        _id,
                     });
                 }
             });
@@ -35,10 +35,10 @@ Dialog.install = (Vue) => {
             return new Promise((resolve, reject)=>{
                 instance.confirm(title, val, { isClose:false, lineClamp : 3, button : ["我知道了"] });
                 // 注册回调成功函数
-                instance.resolve = (id)=>{
+                instance.resolve = (_id)=>{
                     instance.show = false;
                     resolve({
-                        id,
+                        _id,
                     });
                 }
             })
@@ -47,10 +47,10 @@ Dialog.install = (Vue) => {
             return new Promise((resolve, reject)=>{
                 instance.prompt(title, val, placeholder, { isClose:false, vHtml:true });
                 // 注册回调成功函数
-                instance.resolve = (id)=>{
+                instance.resolve = (_id)=>{
                     instance.show = false;
                     resolve({
-                        id,
+                        _id,
                         val : instance.promptVal
                     });
                 }
