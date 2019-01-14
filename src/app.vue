@@ -40,9 +40,10 @@ export default {
             this.$Dialog.Message(msg, title, {
                 button: ["我知道了",{
                     "立即访问" : {
-                        "border-color" : "#fff"
+                        "border-color" : "#fff",
+                        "color" : "#127BEF"
                     }
-                }],
+                },"☹"],
                 // btnEffect: "right",
                 titlEffect : 'center',
                 vHtml: false,

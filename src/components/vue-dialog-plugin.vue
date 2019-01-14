@@ -39,7 +39,7 @@
                 </div>
             </template>
             <!-- dialog-footer -->
-            <ul class="d-dialog-footer sn-f-cb" :class="`btn-group-${option.button.length} btn-effect-${option.btnEffect}`" v-if="option.button && option.button.length > 0" :style="option.footerStyle">
+            <ul class="d-dialog-footer sn-f-cb" :class="`btn-group-${option.button.length} btn-effect-${option.btnEffect} btn-item-${!!option.btnReverse ? 'right' : 'left'}`" v-if="option.button && option.button.length > 0" :style="option.footerStyle">
                 <li v-for="(item, index) in option.button" class="btn-item">
                     <button type="button" :class="`btn-item-${index+1}`" :style="getBtnStyle(item)" @click="resolve(index+1)">{{getBtnVal(item)}}</button>
                 </li>
@@ -63,6 +63,7 @@ export default {
             module : ["title","footer"], //title-标题模块, body-内容展示模块（默认有） , footer-操作模块
             button : ["确认","取消"], //按钮模块,从做只有对应顺序,id是对应的索引
             btnEffect : "center",
+            btnReverse: false, //按钮反序排列即做有往右排列
             titlEffect : "left",
             isClose : true, //是否关闭按钮
             lineClamp : 6, //内容最多显示几行,溢出省略 ≤ 10
