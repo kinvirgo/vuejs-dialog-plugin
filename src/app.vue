@@ -45,7 +45,7 @@ export default {
                 }],
                 // btnEffect: "right",
                 titlEffect : 'center',
-                vHtml: true,
+                vHtml: false,
                 lineClamp : 6,
                 bgStyle : {
                     "background-image" : `url(${require('./../resources/bg-1.jpg')})`,
